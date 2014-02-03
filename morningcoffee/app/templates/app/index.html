@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+
+{% block extra_css %}
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/app.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<h1>Latest links</h1>
+
+	{% for tweet in timeline %}
+	<div class="row summaryBlock">
+
+		<div id='tweet-embed-{{tweet.id}}' class="col-md-6"></div>
+
+		<div id='summary-{{tweet.id}}' class="col-md-6"></div>
+
+		<script>
+			var decodedEmbedHtml = $('<div/>').html("{{tweet.oembed.html}}").text();
+			$('#tweet-embed-{{tweet.id}}').append(decodedEmbedHtml);
+
+			$(document).ready(function() {
+				$.get("summarize/{{ tweet.entities.urls.0.expanded_url }}", function(data) {
+					if (data === "None") return;
+
+					var sentences = data.split('|');
+					var dom = "<ul class='fa-ul'>";
+					for (var i = 0; i < sentences.length; i++) {
+						if (sentences[i]) {
+							dom += "<li><i class='fa-li fa fa-info-circle'></i>" + sentences[i] + "</li>";	
+						}
+					}
+					dom += "</ul>";
+					$('#summary-{{tweet.id}}').append(dom);
+				});
+			});
+		</script>
+	</div>
+	{% endfor %}
+</div>
+{% endblock %}
