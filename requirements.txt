@@ -12,7 +12,7 @@ goose-extractor==1.0.6
 gunicorn==18.0
 jieba==0.31
 lxml==3.2.5
-nltk==2.0.4
+nltk==3.4.5
 psycopg2==2.5.2
 pyteaser==1.0
 redis==2.9.0
