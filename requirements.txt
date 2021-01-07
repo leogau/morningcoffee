@@ -11,7 +11,7 @@ django-toolbelt==0.0.1
 goose-extractor==1.0.6
 gunicorn==18.0
 jieba==0.31
-lxml==3.2.5
+lxml==4.6.2
 nltk==2.0.4
 psycopg2==2.5.2
 pyteaser==1.0
