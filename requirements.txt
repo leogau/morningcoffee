@@ -1,6 +1,6 @@
 BeautifulSoup==3.2.1
 Django==1.6.1
-Pillow==2.3.0
+Pillow==8.1.1
 PyYAML==3.10
 cssselect==0.9.1
 dj-database-url==0.2.2
